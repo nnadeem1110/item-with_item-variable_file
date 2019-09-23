@@ -1,0 +1,12 @@
+#To add users using key and keypair and variable file
+---
+       - hosts: test2
+         become: true
+         vars_files:
+                 - /home/test/vars.yml # path of veriables written file
+         tasks:
+                 - name: adding user
+                   user:
+                           name: "{{ item }}" #key
+                           state: present
+                   with_items: "{{ myuserlist }}" #keypair
